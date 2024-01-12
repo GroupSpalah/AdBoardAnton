@@ -17,8 +17,6 @@ public class AdvertisementDaoImpl implements AdvertisementDao {
         EntityManager em = FACTORY.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        advertisement.setName("Car");
-
         Advertisement advertisement1 = em.merge(advertisement);
         em.persist(advertisement1);
         System.out.println(advertisement1);

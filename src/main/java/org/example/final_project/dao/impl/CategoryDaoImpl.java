@@ -17,7 +17,6 @@ public class CategoryDaoImpl implements CrudDao<Category> {
         EntityManager em = FACTORY.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        category.setName("Computers");
 
         Category category1 = em.merge(category);
         em.persist(category1);

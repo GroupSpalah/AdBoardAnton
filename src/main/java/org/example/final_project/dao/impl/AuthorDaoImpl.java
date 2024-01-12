@@ -19,8 +19,6 @@ public class AuthorDaoImpl implements CrudDao<Author> {
         EntityManager em = FACTORY.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        author.setName("Ivan");
-
         Author author1 = em.merge(author);
         em.persist(author1);
         System.out.println(author1);
