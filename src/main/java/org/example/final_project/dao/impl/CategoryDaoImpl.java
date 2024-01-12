@@ -4,13 +4,12 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
-import org.example.final_project.dao.CategoryDao;
-import org.example.final_project.domain.Advertisement;
+import org.example.final_project.dao.CrudDao;
 import org.example.final_project.domain.Category;
 
 import java.sql.SQLException;
 
-public class CategoryDaoImpl implements CategoryDao {
+public class CategoryDaoImpl implements CrudDao<Category> {
     public static final EntityManagerFactory FACTORY =
             Persistence.createEntityManagerFactory("antonio");
     @Override
@@ -19,7 +18,6 @@ public class CategoryDaoImpl implements CategoryDao {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
         category.setName("Computers");
-
 
         Category category1 = em.merge(category);
         em.persist(category1);
@@ -52,5 +50,17 @@ public class CategoryDaoImpl implements CategoryDao {
         em.close();
         return category;
 
+    }
+
+    @Override
+    public Category removeById(int id) throws SQLException {
+        EntityManager em = FACTORY.createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        Category category = em.find(Category.class,id);
+        em.remove(category);
+        transaction.commit();
+        em.close();
+        return category;
     }
 }

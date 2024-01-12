@@ -4,13 +4,14 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
-import org.example.final_project.dao.AuthorDao;
-import org.example.final_project.domain.Advertisement;
+import org.example.final_project.dao.CrudDao;
 import org.example.final_project.domain.Author;
+
+
 
 import java.sql.SQLException;
 
-public class AuthorDaoImpl implements AuthorDao {
+public class AuthorDaoImpl implements CrudDao<Author> {
     public static final EntityManagerFactory FACTORY =
             Persistence.createEntityManagerFactory("antonio");
     @Override
@@ -19,7 +20,6 @@ public class AuthorDaoImpl implements AuthorDao {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
         author.setName("Ivan");
-
 
         Author author1 = em.merge(author);
         em.persist(author1);
@@ -51,6 +51,19 @@ public class AuthorDaoImpl implements AuthorDao {
         transaction.commit();
         em.close();
 
+        return author;
+
+    }
+
+    @Override
+    public Author removeById(int id) throws SQLException {
+        EntityManager em = FACTORY.createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        Author author = em.find(Author.class,id);
+        em.remove(author);
+        transaction.commit();
+        em.close();
         return author;
 
     }

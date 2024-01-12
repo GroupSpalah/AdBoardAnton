@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -23,8 +24,10 @@ public class Advertisement {
     String name;
     LocalDate date;
 
+    @Column(name = "advert_text")
     String advertText;
-    double cost;
+
+    BigDecimal cost;
 
  @ManyToOne
     @JoinColumn(name = "FK_Advertisement_Category")

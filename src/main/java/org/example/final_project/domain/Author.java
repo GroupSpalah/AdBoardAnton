@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.util.List;
+
 
 @Entity
 @AllArgsConstructor
@@ -37,8 +37,5 @@ public class Author {
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE},
             mappedBy = "author")
     Email email;
-
-
-
 
 }
