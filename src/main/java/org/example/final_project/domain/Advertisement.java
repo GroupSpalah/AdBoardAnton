@@ -18,7 +18,7 @@ import java.time.LocalDate;
 public class Advertisement {
     @Id
     @GeneratedValue
-    @Column(name = "advertisement_id")
+    @Column(name = "ad_id")
     int id;
 
     String name;
@@ -30,10 +30,10 @@ public class Advertisement {
     BigDecimal cost;
 
  @ManyToOne
-    @JoinColumn(name = "FK_Advertisement_Category")
+    @JoinColumn(name = "FK_Ad_Category")
     Category category;
 
     @ManyToOne
-    @JoinColumn(name = "FK_Advertisement_Author")
+    @JoinColumn(name = "FK_Ad_Author")
     Author author;
 }

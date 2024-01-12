@@ -19,7 +19,6 @@ public class AdvertisementDaoImpl implements AdvertisementDao {
         transaction.begin();
         Advertisement advertisement1 = em.merge(advertisement);
         em.persist(advertisement1);
-        System.out.println(advertisement1);
         transaction.commit();
         em.close();
         return advertisement1;
@@ -98,9 +97,10 @@ public class AdvertisementDaoImpl implements AdvertisementDao {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
         TypedQuery<Advertisement> query =
-                em.createQuery("SELECT a FROM Advertisement a WHERE a.advert_text LIKE :keyword",
+                em.createQuery("SELECT a FROM Advertisement a WHERE a.advert_text LIKE " +
+                                "CONCAT('%', :keyword, '%')",
                 Advertisement.class);
-        query.setParameter("keyword", "%" + keyWord + "%");
+        query.setParameter("keyword", keyWord);
         List<Advertisement> advertisement = query.getResultList();
         System.out.println(advertisement);
         transaction.commit();
