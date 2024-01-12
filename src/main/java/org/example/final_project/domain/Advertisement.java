@@ -32,4 +32,8 @@ public class Advertisement {
  @ManyToOne
     @JoinColumn(name = "FK_Advertisement_Category")
     Category category;
+
+    @ManyToOne
+    @JoinColumn(name = "FK_Advertisement_Author")
+    Author author;
 }

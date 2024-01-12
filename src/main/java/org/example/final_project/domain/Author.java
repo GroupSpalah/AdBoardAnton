@@ -22,9 +22,6 @@ public class Author {
 
     String name;
 
-     @ManyToOne
-    @JoinColumn(name = "FK_Author_Advertisement")
-    Advertisement advertisement;
 
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE},
             mappedBy = "author")
