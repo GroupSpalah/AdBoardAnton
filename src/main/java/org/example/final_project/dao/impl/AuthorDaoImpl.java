@@ -1,9 +1,6 @@
 package org.example.final_project.dao.impl;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Persistence;
+import jakarta.persistence.*;
 import org.example.final_project.dao.CrudDao;
 import org.example.final_project.domain.Author;
 
@@ -54,15 +51,16 @@ public class AuthorDaoImpl implements CrudDao<Author> {
     }
 
     @Override
-    public Author removeById(int id) throws SQLException {
+    public void removeById(int id) throws SQLException {
         EntityManager em = FACTORY.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        Author author = em.find(Author.class,id);
-        em.remove(author);
+        Query query = em.createQuery("DELETE FROM Author c WHERE c.id =: c_id");
+        query.setParameter("c_id", id);
+        query.executeUpdate();
         transaction.commit();
         em.close();
-        return author;
+
 
     }
 }

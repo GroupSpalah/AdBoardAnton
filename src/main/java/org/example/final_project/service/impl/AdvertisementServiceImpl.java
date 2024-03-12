@@ -33,8 +33,9 @@ dao.add(advertisement);
     }
 
     @Override
-    public Advertisement removeById(int id) throws SQLException {
-        return dao.removeById(id);
+    public void removeById(int id) throws SQLException {
+         dao.removeById(id);
+
     }
 
     @Override

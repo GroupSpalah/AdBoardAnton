@@ -18,7 +18,7 @@ public class Phone {
     @Column(name = "phone_id")
     int id;
 
-    int number;
+    String number;
 
     @OneToOne
     @JoinColumn(name = "FK_Phone_Author")

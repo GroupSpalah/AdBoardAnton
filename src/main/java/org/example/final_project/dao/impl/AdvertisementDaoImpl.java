@@ -43,21 +43,19 @@ public class AdvertisementDaoImpl implements AdvertisementDao {
         System.out.println(advertisement);
         transaction.commit();
         em.close();
-
         return advertisement;
-
     }
 
     @Override
-    public Advertisement removeById(int id) throws SQLException {
+    public void removeById(int id) throws SQLException {
         EntityManager em = FACTORY.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        Advertisement advertisement = em.find(Advertisement.class,id);
-        em.remove(advertisement);
+        Query query = em.createQuery("DELETE FROM Advertisement c WHERE c.id =: c_id");
+        query.setParameter("c_id", id);
+        query.executeUpdate();
         transaction.commit();
-        em.close();
-        return advertisement;
+       em.close();
     }
 
     @Override

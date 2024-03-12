@@ -8,4 +8,6 @@ public interface CrudDao<T> {
     void add(T t);
 
     T findById(int id) throws SQLException;
+
+     void removeById(int id) throws SQLException;
 }
