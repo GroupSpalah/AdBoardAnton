@@ -1,0 +1,65 @@
+-- ad_sql.address definition
+
+CREATE TABLE `address` (
+  `FK_Address_Author` int DEFAULT NULL,
+  `address_id` int NOT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `country` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`address_id`),
+  UNIQUE KEY `UK_2wlfjc5j19o2t0rj4kgtwoadq` (`FK_Address_Author`),
+  CONSTRAINT `FK6o3psxc02blsvg7j5vr5mh672` FOREIGN KEY (`FK_Address_Author`) REFERENCES `author` (`author_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- ad_sql.advertisement definition
+
+CREATE TABLE `advertisement` (
+  `FK_Ad_Author` int DEFAULT NULL,
+  `FK_Ad_Category` int DEFAULT NULL,
+  `ad_id` int NOT NULL,
+  `date` date DEFAULT NULL,
+  `price` decimal(38,2) DEFAULT NULL,
+  `advert_text` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ad_id`),
+  KEY `FKnfpxek4pp6lido9nglqbcs9cl` (`FK_Ad_Author`),
+  KEY `FK3wm74cff6rcp3h9983ek7ndtb` (`FK_Ad_Category`),
+  CONSTRAINT `FK3wm74cff6rcp3h9983ek7ndtb` FOREIGN KEY (`FK_Ad_Category`) REFERENCES `category` (`category_id`),
+  CONSTRAINT `FKnfpxek4pp6lido9nglqbcs9cl` FOREIGN KEY (`FK_Ad_Author`) REFERENCES `author` (`author_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- ad_sql.author definition
+
+CREATE TABLE `author` (
+  `author_id` int NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`author_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ad_sql.category definition
+
+CREATE TABLE `category` (
+  `category_id` int NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`category_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ad_sql.email definition
+
+CREATE TABLE `email` (
+  `FK_Email_Author` int DEFAULT NULL,
+  `email_id` int NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`email_id`),
+  UNIQUE KEY `UK_324vricujawmaljrvvs7yhfr1` (`FK_Email_Author`),
+  CONSTRAINT `FKlx5a2bvawyxr8hdr94eo4cgwl` FOREIGN KEY (`FK_Email_Author`) REFERENCES `author` (`author_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+-- ad_sql.phone definition
+
+CREATE TABLE `phone` (
+  `FK_Phone_Author` int DEFAULT NULL,
+  `phone_id` int NOT NULL,
+  `number` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`phone_id`),
+  UNIQUE KEY `UK_fgsl01c9ehoo7yddsxhs3epbn` (`FK_Phone_Author`),
+  CONSTRAINT `FKc7o78kbjp6v12wublw0l7vhkk` FOREIGN KEY (`FK_Phone_Author`) REFERENCES `author` (`author_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
