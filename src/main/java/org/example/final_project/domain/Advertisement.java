@@ -27,13 +27,14 @@ public class Advertisement {
     @Column(name = "advert_text")
     String advertText;
 
+    @Column(name = "price")
     BigDecimal cost;
 
  @ManyToOne
     @JoinColumn(name = "FK_Ad_Category")
     Category category;
 
-    @ManyToOne
+   @ManyToOne
     @JoinColumn(name = "FK_Ad_Author")
     Author author;
 }

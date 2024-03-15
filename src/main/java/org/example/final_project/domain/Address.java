@@ -21,8 +21,7 @@ public class Address {
      String country;
      String city;
 
-
-    @OneToOne
+     @OneToOne
     @JoinColumn(name = "FK_Address_Author")
     Author author;
 }
