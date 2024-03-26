@@ -6,6 +6,7 @@ import org.example.final_project.service.CrudService;
 import org.example.final_project.service.impl.AdvertisementServiceImpl;
 import org.example.final_project.service.impl.AuthorServiceImpl;
 import org.example.final_project.service.impl.CategoryServiceImpl;
+import org.example.final_project.service.impl.MatchAdServiceImpl;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;
@@ -16,6 +17,7 @@ public class Test {
         CrudService<Author> authorService = new AuthorServiceImpl();
         CrudService<Category> categoryService = new CategoryServiceImpl();
         AdvertisementService adService = new AdvertisementServiceImpl();
+        CrudService<MatchingAd> matchAdService = new MatchAdServiceImpl();
 
         Category technology = Category
                 .builder()

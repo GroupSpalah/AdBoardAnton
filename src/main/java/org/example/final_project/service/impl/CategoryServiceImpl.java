@@ -3,7 +3,7 @@ package org.example.final_project.service.impl;
 
 import org.example.final_project.dao.CrudDao;
 import org.example.final_project.dao.impl.CategoryDaoImpl;
-import org.example.final_project.domain.Advertisement;
+
 import org.example.final_project.domain.Category;
 
 import org.example.final_project.service.CrudService;
