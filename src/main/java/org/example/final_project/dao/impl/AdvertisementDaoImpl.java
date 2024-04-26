@@ -59,7 +59,7 @@ public class AdvertisementDaoImpl implements AdvertisementDao {
     }
 
     @Override
-    public List<Advertisement> getByCategory(Category category) throws SQLException {
+    public List<Advertisement> getByCategory(String name) throws SQLException {
         EntityManager em = FACTORY.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
@@ -67,8 +67,9 @@ public class AdvertisementDaoImpl implements AdvertisementDao {
                 em.createQuery("SELECT a FROM Advertisement a WHERE a.category.name = :category_name",
                         Advertisement.class);
 
-        query.setParameter("category_name", category);
+        query.setParameter("category_name",name);
         List<Advertisement> advertisement = query.getResultList();
+        System.out.println(advertisement);
         transaction.commit();
         return advertisement;
     }

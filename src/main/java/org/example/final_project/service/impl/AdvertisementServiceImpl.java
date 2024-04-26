@@ -41,9 +41,9 @@ dao.add(advertisement);
 
     }
 
-    @Override
-    public List<Advertisement> getByCategory(Category category) throws SQLException {
-        return dao.getByCategory(category);
+   @Override
+    public List<Advertisement> getByCategory(String name) throws SQLException {
+        return dao.getByCategory(name);
     }
 
     @Override

@@ -53,14 +53,28 @@ public class Test {
                 .phone(phone)
                 .email(email)
                 .build();
-
+        authorService.add(author);
 
         phone.setAuthor(author);
         address.setAuthor(author);
         email.setAuthor(author);
 
-        authorService.add(author);
 
+        MatchingAd matchingAd = MatchingAd
+                .builder()
+                        .category(technology)
+                                .title("Title")
+                                        .priceFrom(BigDecimal.valueOf(100))
+                                                .priceTo(BigDecimal.valueOf(200))
+                                                        .author(author)
+                                                                .build();
+
+
+
+
+        Author author1 = authorService.findById(1);
+               matchingAd.setAuthor(author1);
+        matchAdService.add(matchingAd);
         Advertisement advertisement = Advertisement
                 .builder()
                 .name("Phones")
@@ -74,9 +88,8 @@ public class Test {
         adService.add(advertisement);
 
 
-        Category category1 = categoryService.findById(1);
-        advertisement.setCategory(category1);
-adService.getByCategory(technology);
+
+/*adService.getByCategory("Technology");*/
 
     }
 }
