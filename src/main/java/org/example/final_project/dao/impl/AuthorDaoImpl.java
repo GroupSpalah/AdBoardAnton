@@ -3,11 +3,11 @@ package org.example.final_project.dao.impl;
 import jakarta.persistence.*;
 import org.example.final_project.dao.CrudDao;
 import org.example.final_project.domain.Author;
-
+import org.springframework.stereotype.Repository;
 
 
 import java.sql.SQLException;
-
+@Repository
 public class AuthorDaoImpl implements CrudDao<Author> {
     public static final EntityManagerFactory FACTORY =
             Persistence.createEntityManagerFactory("antonio");
@@ -18,7 +18,6 @@ public class AuthorDaoImpl implements CrudDao<Author> {
         transaction.begin();
         Author author1 = em.merge(author);
         em.persist(author1);
-        System.out.println(author1);
         transaction.commit();
         em.close();
         return author1;
@@ -42,7 +41,6 @@ public class AuthorDaoImpl implements CrudDao<Author> {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
         Author author = em.find(Author.class, id);
-        System.out.println(author);
         transaction.commit();
         em.close();
 

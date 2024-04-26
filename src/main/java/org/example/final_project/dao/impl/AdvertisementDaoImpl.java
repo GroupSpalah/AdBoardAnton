@@ -4,11 +4,12 @@ import jakarta.persistence.*;
 import org.example.final_project.dao.AdvertisementDao;
 import org.example.final_project.domain.Advertisement;
 import org.example.final_project.domain.Category;
+import org.springframework.stereotype.Repository;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
-
+@Repository
 public class AdvertisementDaoImpl implements AdvertisementDao {
     public static final EntityManagerFactory FACTORY =
             Persistence.createEntityManagerFactory("antonio");
@@ -40,7 +41,6 @@ public class AdvertisementDaoImpl implements AdvertisementDao {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
         Advertisement advertisement = em.find(Advertisement.class, id);
-        System.out.println(advertisement);
         transaction.commit();
         em.close();
         return advertisement;
@@ -69,7 +69,6 @@ public class AdvertisementDaoImpl implements AdvertisementDao {
 
         query.setParameter("category_name", category);
         List<Advertisement> advertisement = query.getResultList();
-        System.out.println(advertisement);
         transaction.commit();
         return advertisement;
     }
@@ -84,7 +83,6 @@ public class AdvertisementDaoImpl implements AdvertisementDao {
                         Advertisement.class);
         query.setParameter("author_name", name);
         List<Advertisement> advertisement = query.getResultList();
-        System.out.println(advertisement);
         transaction.commit();
         return advertisement;
     }
@@ -100,7 +98,6 @@ public class AdvertisementDaoImpl implements AdvertisementDao {
                 Advertisement.class);
         query.setParameter("keyword", keyWord);
         List<Advertisement> advertisement = query.getResultList();
-        System.out.println(advertisement);
         transaction.commit();
         return advertisement;
     }
@@ -115,7 +112,6 @@ public class AdvertisementDaoImpl implements AdvertisementDao {
         Advertisement.class);
         query.setParameter("a_date",date);
         List<Advertisement> advertisement = query.getResultList();
-        System.out.println(advertisement);
         transaction.commit();
         return advertisement;
     }

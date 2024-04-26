@@ -1,15 +1,18 @@
 package org.example.final_project.service.impl;
 
+import lombok.AllArgsConstructor;
 import org.example.final_project.dao.AdvertisementDao;
 import org.example.final_project.dao.impl.AdvertisementDaoImpl;
 import org.example.final_project.domain.Advertisement;
 import org.example.final_project.domain.Category;
 import org.example.final_project.service.AdvertisementService;
+import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
-
+@Service
+@AllArgsConstructor
 public class AdvertisementServiceImpl implements AdvertisementService {
     AdvertisementDao dao;
 

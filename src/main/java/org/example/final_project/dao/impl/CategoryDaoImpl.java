@@ -3,9 +3,10 @@ package org.example.final_project.dao.impl;
 import jakarta.persistence.*;
 import org.example.final_project.dao.CrudDao;
 import org.example.final_project.domain.Category;
+import org.springframework.stereotype.Repository;
 
 import java.sql.SQLException;
-
+@Repository
 public class CategoryDaoImpl implements CrudDao<Category> {
     public static final EntityManagerFactory FACTORY =
             Persistence.createEntityManagerFactory("antonio");

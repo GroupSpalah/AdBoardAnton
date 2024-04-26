@@ -1,15 +1,18 @@
 package org.example.final_project.service.impl;
 
 
+import lombok.AllArgsConstructor;
 import org.example.final_project.dao.CrudDao;
 import org.example.final_project.dao.impl.AuthorDaoImpl;
 
 import org.example.final_project.domain.Author;
 
 import org.example.final_project.service.CrudService;
+import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
-
+@Service
+@AllArgsConstructor
 public class AuthorServiceImpl implements CrudService<Author> {
     CrudDao<Author> dao;
 

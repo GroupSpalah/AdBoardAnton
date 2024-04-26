@@ -7,6 +7,7 @@ import org.example.final_project.service.impl.AdvertisementServiceImpl;
 import org.example.final_project.service.impl.AuthorServiceImpl;
 import org.example.final_project.service.impl.CategoryServiceImpl;
 import org.example.final_project.service.impl.MatchAdServiceImpl;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;
@@ -14,10 +15,12 @@ import java.time.LocalDate;
 
 public class Test {
     public static void main(String[] args) throws SQLException {
-        CrudService<Author> authorService = new AuthorServiceImpl();
-        CrudService<Category> categoryService = new CategoryServiceImpl();
-        AdvertisementService adService = new AdvertisementServiceImpl();
-        CrudService<MatchingAd> matchAdService = new MatchAdServiceImpl();
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ConfigApp.class);
+
+        AuthorServiceImpl authorService = context.getBean(AuthorServiceImpl.class);
+         CategoryServiceImpl categoryService = context.getBean(CategoryServiceImpl.class);
+         AdvertisementServiceImpl adService = context.getBean(AdvertisementServiceImpl.class);
+         MatchAdServiceImpl matchAdService = context.getBean(MatchAdServiceImpl.class);
 
         Category technology = Category
                 .builder()
@@ -73,7 +76,7 @@ public class Test {
 
         Category category1 = categoryService.findById(1);
         advertisement.setCategory(category1);
-
+adService.getByCategory(technology);
 
     }
 }
