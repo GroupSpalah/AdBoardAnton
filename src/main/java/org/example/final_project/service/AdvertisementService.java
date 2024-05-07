@@ -1,7 +1,7 @@
 package org.example.final_project.service;
 
 import org.example.final_project.domain.Advertisement;
-import org.example.final_project.domain.Category;
+
 
 import java.sql.SQLException;
 import java.time.LocalDate;

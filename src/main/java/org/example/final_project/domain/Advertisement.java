@@ -32,7 +32,7 @@ public class Advertisement {
 
     @ManyToOne
     @JoinColumn(name = "FK_Ad_category")
-    private Category category;
+    Category category;
 
    @ManyToOne
     @JoinColumn(name = "FK_Ad_Author")

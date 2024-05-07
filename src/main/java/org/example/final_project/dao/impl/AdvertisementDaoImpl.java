@@ -79,7 +79,6 @@ public class AdvertisementDaoImpl implements AdvertisementDao {
 
     @Override
     public List<Advertisement> showByDate(LocalDate date) throws SQLException {
-
         TypedQuery<Advertisement> query =
                 em.createQuery("SELECT a FROM Advertisement a WHERE a.date = :a_date ",
         Advertisement.class);

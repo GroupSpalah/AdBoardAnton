@@ -26,7 +26,7 @@ public class Test {
                 .builder()
                 .name("Technology")
                 .build();
-        categoryService.add(technology);
+
 
 
         Address address = Address
@@ -48,6 +48,7 @@ public class Test {
 
         Author author = Author
                 .builder()
+                .id(1)
                 .name("Edgar")
                 .address(address)
                 .phone(phone)
@@ -62,6 +63,7 @@ public class Test {
 
         MatchingAd matchingAd = MatchingAd
                 .builder()
+                .id(1)
                         .category(technology)
                                 .title("Title")
                                         .priceFrom(BigDecimal.valueOf(100))
@@ -72,8 +74,8 @@ public class Test {
 
 
 
-        Author author1 = authorService.findById(1);
-               matchingAd.setAuthor(author1);
+
+
         matchAdService.add(matchingAd);
         Advertisement advertisement = Advertisement
                 .builder()
@@ -86,7 +88,7 @@ public class Test {
                 .build();
 
         adService.add(advertisement);
-
+        categoryService.add(technology);
 
 
 /*adService.getByCategory("Technology");*/
