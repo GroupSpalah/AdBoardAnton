@@ -1,8 +1,15 @@
 package org.example.final_project.domain;
 
-import jakarta.persistence.*;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import lombok.experimental.FieldDefaults;
+
+import javax.persistence.*;
 
 @Entity
 @AllArgsConstructor
@@ -14,7 +21,7 @@ import lombok.experimental.FieldDefaults;
 @ToString
 public class Address {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "address_id")
     int id;
 

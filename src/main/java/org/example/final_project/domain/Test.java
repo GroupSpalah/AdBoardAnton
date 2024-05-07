@@ -1,8 +1,7 @@
 package org.example.final_project.domain;
 
 
-import org.example.final_project.service.AdvertisementService;
-import org.example.final_project.service.CrudService;
+import org.example.final_project.configApp.ConfigApp;
 import org.example.final_project.service.impl.AdvertisementServiceImpl;
 import org.example.final_project.service.impl.AuthorServiceImpl;
 import org.example.final_project.service.impl.CategoryServiceImpl;
@@ -15,7 +14,8 @@ import java.time.LocalDate;
 
 public class Test {
     public static void main(String[] args) throws SQLException {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ConfigApp.class);
+        AnnotationConfigApplicationContext context =
+                new AnnotationConfigApplicationContext(ConfigApp.class);
 
         AuthorServiceImpl authorService = context.getBean(AuthorServiceImpl.class);
          CategoryServiceImpl categoryService = context.getBean(CategoryServiceImpl.class);
@@ -53,12 +53,12 @@ public class Test {
                 .phone(phone)
                 .email(email)
                 .build();
-        authorService.add(author);
+
 
         phone.setAuthor(author);
         address.setAuthor(author);
         email.setAuthor(author);
-
+        authorService.add(author);
 
         MatchingAd matchingAd = MatchingAd
                 .builder()

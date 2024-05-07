@@ -1,9 +1,9 @@
 package org.example.final_project.domain;
 
-import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -30,9 +30,9 @@ public class Advertisement {
     @Column(name = "price")
     BigDecimal cost;
 
- @ManyToOne
-    @JoinColumn(name = "FK_Ad_Category")
-    Category category;
+    @ManyToOne
+    @JoinColumn(name = "FK_Ad_category")
+    private Category category;
 
    @ManyToOne
     @JoinColumn(name = "FK_Ad_Author")

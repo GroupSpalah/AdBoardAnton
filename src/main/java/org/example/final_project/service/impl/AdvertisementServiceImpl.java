@@ -2,9 +2,7 @@ package org.example.final_project.service.impl;
 
 import lombok.AllArgsConstructor;
 import org.example.final_project.dao.AdvertisementDao;
-import org.example.final_project.dao.impl.AdvertisementDaoImpl;
 import org.example.final_project.domain.Advertisement;
-import org.example.final_project.domain.Category;
 import org.example.final_project.service.AdvertisementService;
 import org.springframework.stereotype.Service;
 
@@ -15,14 +13,10 @@ import java.util.List;
 @AllArgsConstructor
 public class AdvertisementServiceImpl implements AdvertisementService {
     AdvertisementDao dao;
-
-    public AdvertisementServiceImpl() {
-        dao = new AdvertisementDaoImpl();
-    };
-
     @Override
-    public Advertisement update(Advertisement advertisement) throws SQLException {
-        return advertisement;
+    public void update(Advertisement advertisement) throws SQLException {
+        dao.update(advertisement);
+
     }
 
     @Override

@@ -1,9 +1,9 @@
 package org.example.final_project.domain;
 
-import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity

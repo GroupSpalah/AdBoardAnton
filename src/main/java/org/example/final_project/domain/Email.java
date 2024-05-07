@@ -1,8 +1,9 @@
 package org.example.final_project.domain;
 
-import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import javax.persistence.*;
 
 @Entity
 @AllArgsConstructor
@@ -14,7 +15,7 @@ import lombok.experimental.FieldDefaults;
 @ToString
 public class Email {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "email_id")
     int id;
 
