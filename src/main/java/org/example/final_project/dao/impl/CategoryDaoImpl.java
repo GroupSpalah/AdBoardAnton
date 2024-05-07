@@ -10,9 +10,6 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 import java.sql.SQLException;
 
-
-
-
 @Repository
 @Transactional
 public class CategoryDaoImpl implements CrudDao<Category> {
