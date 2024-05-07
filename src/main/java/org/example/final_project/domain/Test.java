@@ -48,7 +48,6 @@ public class Test {
 
         Author author = Author
                 .builder()
-                .id(1)
                 .name("Edgar")
                 .address(address)
                 .phone(phone)
@@ -59,11 +58,10 @@ public class Test {
         phone.setAuthor(author);
         address.setAuthor(author);
         email.setAuthor(author);
-        authorService.add(author);
+
 
         MatchingAd matchingAd = MatchingAd
                 .builder()
-                .id(1)
                         .category(technology)
                                 .title("Title")
                                         .priceFrom(BigDecimal.valueOf(100))
@@ -76,7 +74,7 @@ public class Test {
 
 
 
-        matchAdService.add(matchingAd);
+
         Advertisement advertisement = Advertisement
                 .builder()
                 .name("Phones")
@@ -87,8 +85,9 @@ public class Test {
                 .category(technology)
                 .build();
 
-        adService.add(advertisement);
-        categoryService.add(technology);
+
+
+        authorService.add(author);
 
 
 /*adService.getByCategory("Technology");*/

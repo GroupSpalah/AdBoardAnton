@@ -3,6 +3,7 @@ package org.example.final_project.configApp;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -21,6 +22,7 @@ import javax.sql.DataSource;
         "org.example.final_project.dao"})
 
 @EnableTransactionManagement
+@EnableAspectJAutoProxy(proxyTargetClass = true)
 public class ConfigApp {
     @Bean
     public TransactionManager transactionManager(EntityManagerFactory factory) {
