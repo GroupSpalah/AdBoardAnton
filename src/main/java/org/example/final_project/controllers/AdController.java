@@ -15,7 +15,7 @@ import java.util.List;
 public class AdController {
     AdvertisementService service;
 
-    @PostMapping(value = "/save")
+    @PostMapping(value = "/save",consumes = "application/json")
     public void save(@RequestBody Advertisement ad) {
         service.add(ad);
     }
