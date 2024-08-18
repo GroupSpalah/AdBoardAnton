@@ -14,20 +14,21 @@ import java.sql.SQLException;
 @Transactional
 public class CategoryDaoImpl implements CrudDao<Category> {
     @PersistenceContext
-     EntityManager em;
+    EntityManager em;
+
     @Override
     public void update(Category category) throws SQLException {
         Category category1 = em.merge(category);
         em.persist(category1);
         em.close();
-
-
     }
+
     @Override
     public void add(Category category) {
         em.persist(category);
 
     }
+
     @Override
     public Category findById(int id) throws SQLException {
         Category category = em.find(Category.class, id);
@@ -35,6 +36,7 @@ public class CategoryDaoImpl implements CrudDao<Category> {
         return category;
 
     }
+
     @Override
     public void removeById(int id) throws SQLException {
         Query query = em.createQuery("DELETE FROM Category c WHERE c.id =: c_id");

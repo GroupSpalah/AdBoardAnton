@@ -9,32 +9,27 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 import java.sql.SQLException;
+
 @Repository
 @Transactional
-public class MatchAdDaoImpl implements CrudDao<MatchingAd>  {
+public class MatchAdDaoImpl implements CrudDao<MatchingAd> {
     @PersistenceContext
     EntityManager em;
 
-
     @Override
-    public void   update(MatchingAd matchingAd) throws SQLException {
+    public void update(MatchingAd matchingAd) throws SQLException {
         MatchingAd matchingAd1 = em.merge(matchingAd);
         em.persist(matchingAd1);
-
-
-
     }
 
     @Override
     public void add(MatchingAd matchingAd) {
         em.persist(matchingAd);
-
     }
 
     @Override
     public MatchingAd findById(int id) throws SQLException {
         return em.find(MatchingAd.class, id);
-
     }
 
     @Override

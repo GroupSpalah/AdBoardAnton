@@ -1,7 +1,7 @@
 package org.example.final_project.domain;
 
 
-import org.example.final_project.configApp.ConfigApp;
+import org.example.final_project.config_app.ConfigApp;
 import org.example.final_project.service.impl.AdvertisementServiceImpl;
 import org.example.final_project.service.impl.AuthorServiceImpl;
 import org.example.final_project.service.impl.CategoryServiceImpl;

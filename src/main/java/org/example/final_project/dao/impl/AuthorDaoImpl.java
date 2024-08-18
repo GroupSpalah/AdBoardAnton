@@ -32,7 +32,6 @@ public class AuthorDaoImpl implements CrudDao<Author> {
 
     @Override
     public Author findById(int id) throws SQLException {
-
         Author author = em.find(Author.class, id);
         return author;
 

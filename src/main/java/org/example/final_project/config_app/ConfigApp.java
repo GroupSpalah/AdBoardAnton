@@ -1,4 +1,4 @@
-package org.example.final_project.configApp;
+package org.example.final_project.config_app;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -19,7 +19,8 @@ import javax.sql.DataSource;
 @Configuration
 @ComponentScan(basePackages = {
         "org.example.final_project.service",
-        "org.example.final_project.dao"})
+        "org.example.final_project.dao",
+        "org.example.final_project.controllers"})
 
 @EnableTransactionManagement
 @EnableAspectJAutoProxy(proxyTargetClass = true)
@@ -40,7 +41,7 @@ public class ConfigApp {
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUsername("root");
         dataSource.setPassword("123456");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/mvc_anton?serverTimezone=UTC");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/anton?serverTimezone=UTC");
         return dataSource;
     }
 
@@ -49,7 +50,7 @@ public class ConfigApp {
         HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
         adapter.setDatabase(Database.MYSQL);
         adapter.setShowSql(true);
-        adapter.setDatabasePlatform("org.hibernate.dialect.MySQLDialect");
+        adapter.setDatabasePlatform("org.hibernate.dialect.MySQL8Dialect");
         adapter.setGenerateDdl(true);
         return adapter;
     }

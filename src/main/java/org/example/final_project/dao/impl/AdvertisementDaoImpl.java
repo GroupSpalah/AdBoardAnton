@@ -1,35 +1,35 @@
 package org.example.final_project.dao.impl;
 
-import jakarta.persistence.*;
 import org.example.final_project.dao.AdvertisementDao;
 import org.example.final_project.domain.Advertisement;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
+
 @Repository
 @Transactional
 public class AdvertisementDaoImpl implements AdvertisementDao {
 
     @PersistenceContext
-   EntityManager em;
+    EntityManager em;
 
     @Override
-    public void   update(Advertisement advertisement) throws SQLException {
+    public void update(Advertisement advertisement) throws SQLException {
         Advertisement advertisement1 = em.merge(advertisement);
         em.persist(advertisement1);
-
-
     }
 
     @Override
     public void add(Advertisement advertisement) {
         em.persist(advertisement);
-
     }
-
 
     @Override
     public Advertisement findById(int id) throws SQLException {
@@ -42,19 +42,15 @@ public class AdvertisementDaoImpl implements AdvertisementDao {
         Query query = em.createQuery("DELETE FROM Advertisement c WHERE c.id =: c_id");
         query.setParameter("c_id", id);
         query.executeUpdate();
-
     }
 
     @Override
     public List<Advertisement> getByCategory(String name) throws SQLException {
-
         TypedQuery<Advertisement> query =
                 em.createQuery("SELECT a FROM Advertisement a WHERE a.category.name = :category_name",
                         Advertisement.class);
-
-        query.setParameter("category_name",name);
-        List<Advertisement> advertisement = query.getResultList();
-        return advertisement;
+        query.setParameter("category_name", name);
+        return query.getResultList();
     }
 
     @Override
@@ -63,8 +59,7 @@ public class AdvertisementDaoImpl implements AdvertisementDao {
                 em.createQuery("SELECT a FROM Advertisement a WHERE a.author.name = :author_name ",
                         Advertisement.class);
         query.setParameter("author_name", name);
-        List<Advertisement> advertisement = query.getResultList();
-        return advertisement;
+        return query.getResultList();
     }
 
     @Override
@@ -72,7 +67,7 @@ public class AdvertisementDaoImpl implements AdvertisementDao {
         TypedQuery<Advertisement> query =
                 em.createQuery("SELECT a FROM Advertisement a WHERE a.advert_text LIKE " +
                                 "CONCAT('%', :keyword, '%')",
-                Advertisement.class);
+                        Advertisement.class);
         query.setParameter("keyword", keyWord);
         return query.getResultList();
     }
@@ -81,8 +76,8 @@ public class AdvertisementDaoImpl implements AdvertisementDao {
     public List<Advertisement> showByDate(LocalDate date) throws SQLException {
         TypedQuery<Advertisement> query =
                 em.createQuery("SELECT a FROM Advertisement a WHERE a.date = :a_date ",
-        Advertisement.class);
-        query.setParameter("a_date",date);
+                        Advertisement.class);
+        query.setParameter("a_date", date);
         return query.getResultList();
     }
 }
